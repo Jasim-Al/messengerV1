@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import SendMessage from './SendMessage';
+import store from '../store/configureStore';
+import {sendMessage} from '../actions/messeges';
 
 export default class Messenger extends Component{
-    state = {
-      message:''
-  }
   onMessageSend = e => {
       e.preventDefault();
-      let message = e.target.elements.message.value;
-      this.setState(()=>({
-          message
-      }));
+      let message = 
+      {
+        message:e.target.elements.message.value,
+        author:'Jasi'
+      };
+    store.dispatch(sendMessage(message));
+    console.log(store.getState());
   }
   render() {
     return (
       <div>
-        <h1>{this.state.message}</h1>
         <SendMessage onMessageSend = {this.onMessageSend}/>
       </div>
     );
