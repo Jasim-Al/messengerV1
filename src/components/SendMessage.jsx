@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class SendMessage extends Component {
+export default props => (
+    <div>
+        <form onSubmit = {props.onMessageSend} action="">
+            <input name ="message" type="text"/>
+            <button>SEND</button>
+        </form>
+    </div>
+);
 
-    render() {
-        return (
-            <div>
-                <form action="">
-                    <input type="text"/>
-                    <button>SEND</button>
-                </form>
-            </div>
-        );
-    }
-}
